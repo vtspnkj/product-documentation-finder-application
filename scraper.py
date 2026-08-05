@@ -47,7 +47,7 @@ def get_products_in_category(category_path):
     url = BASE_URL + category_path
     response = requests.get(url, headers=HEADERS, timeout=15)
     response.raise_for_status()
-    soup = BeautifulSoup(response.text, "lxml")
+    soup = BeautifulSoup(response.text, "html.parser")
 
     products = []
     seen_hrefs = set()
@@ -82,7 +82,7 @@ def get_spec_sheets(page_url):
     """
     response = requests.get(page_url, headers=HEADERS, timeout=15)
     response.raise_for_status()
-    soup = BeautifulSoup(response.text, "lxml")
+    soup = BeautifulSoup(response.text, "html.parser")
 
     doc_links = {}
 
